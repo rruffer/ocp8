@@ -1,7 +1,5 @@
 package exercicios;
 
-import java.util.function.IntConsumer;
-import java.util.stream.IntStream;
 import java.util.stream.Stream;
 
 public class TesteExec5 {
@@ -11,6 +9,8 @@ public class TesteExec5 {
 		Stream<Double> stream = Stream.of(2.2, 2.8, 2.5);
 		
 		Stream<Integer> out = stream.mapToInt(Double::intValue).boxed();
+		
+		out.forEach(System.out::println);
 		
 
 	}
