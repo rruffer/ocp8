@@ -11,23 +11,30 @@ import java.util.concurrent.TimeoutException;
  *@link http://iteratrlearning.com/java9/2016/09/13/java9-timeouts-completablefutures.html
  *@link https://www.baeldung.com/java-completablefuture
  */
-public class Testes {
+public class Testes3 {
 
 	public static void main(String[] args) {
 		
 		try {
 			
-		CompletableFuture<Void> timeout = CompletableFuture.supplyAsync(() -> {
+		CompletableFuture<Integer> timeout = CompletableFuture.supplyAsync(() -> {
 
-			while (true) {
-				//System.out.println("teste...");
+			int result = 0;
+			
+			while (result < 100000000) {
+				
+				result++;
+				System.out.println(result);
 			}
+			
+			return result;
 			
 		});
 		
-		System.out.println(timeout.getNumberOfDependents());
 		
-		timeout.get(10, TimeUnit.SECONDS);
+		 int integer = timeout.get(3, TimeUnit.SECONDS);
+		 
+		 System.out.println("Resultado: " + integer);
 		
 		
 		} catch (InterruptedException | ExecutionException | TimeoutException e) {
